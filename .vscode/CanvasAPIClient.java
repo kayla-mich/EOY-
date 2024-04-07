@@ -2,16 +2,17 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
 
 public class CanvasAPIClient {
-    private static final String CANVAS_API_URL = "https://your-canvas-instance/api/v1/";
+    private static final String CANVAS_API_URL = "https://canvas.houstonisd.org/api/v1/";
     private static final String API_KEY = "19304~9IQ18ukLl8JQl5oXCXe5mzl7VAUEK4FFgjBZbSUdY2LLb2YPFf9yCA1ZfxhnXeUn";
     private static final String EMAIL_USERNAME =  "kcrst23@gmail.com";
     private static final String EMAIL_PASSWORD = "LHS2025@kc12";
     private static final String EMAIL_RECIPIENT = "kaylach27@icloud.com";
-
+ 
     public static void main(String[] args) {
         try {
             // Connect to Canvas API
@@ -43,8 +44,8 @@ public class CanvasAPIClient {
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.example.com");
-        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.host", "smtp.example.com"); // Update with your SMTP server host
+        props.put("mail.smtp.port", "587"); // Update with your SMTP server port
 
         Session session = Session.getInstance(props, new Authenticator() {
             @Override
@@ -62,7 +63,7 @@ public class CanvasAPIClient {
             Transport.send(message);
             System.out.println("Email sent successfully.");
         } catch (MessagingException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }
