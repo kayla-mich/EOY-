@@ -5,6 +5,25 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}"
+            ],
+            "name": "Launch Extension",
+            "outFiles": [
+                "${workspaceFolder}/out/**/*.js"
+            ],
+            "preLaunchTask": "npm",
+            "request": "launch",
+            "type": "extensionHost"
+        },
+        {
+            "type": "java",
+            "name": "CanvasAPIClient",
+            "request": "launch",
+            "mainClass": "CanvasAPIClient",
+            "projectName": "CanvasAPI_14abc4c6"
+        },
+        {
             "type": "java",
             "name": "Launch Current File",
             "request": "launch",

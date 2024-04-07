@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    jcenter() // Maven Central repository
+}
+
+dependencies {
+    // JavaMail API dependency
+    implementation 'com.sun.mail:javax.mail:1.6.2'
+}
+
+// Java source compatibility and target compatibility
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+// Task to run the main class
+run {
+    // Set the main class for running the application
+    if (project.hasProperty('mainClass')) {
+        main = project.mainClass
+    } else {
+        // Replace 'Main' with your actual main class name
+        throw new GradleException("No main class specified. Use '-PmainClass=your.package.Main' to specify the main class.")
+    }
+}
