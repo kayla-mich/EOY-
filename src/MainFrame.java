@@ -6,6 +6,7 @@ import javax.swing.JTextField;
 import javax.swing.JFrame;
 
 public class MainFrame extends JFrame {
+    @SuppressWarnings("unused")
     final private Font mainFont= new Font("Segoe print", Font.BOLD, 18);
     JTextField tfNAME, tfUserName;
 
