@@ -4,6 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+<<<<<<< HEAD
         {
             "type": "java",
             "name": "Main",
@@ -36,11 +37,25 @@
             "request": "launch",
             "mainClass": "${file}"
         },
+=======
+        
+
+>>>>>>> fd3df2b9e703c15e19c6235c2af9f737a832d34d
         {
             "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
+<<<<<<< HEAD
+=======
+        },
+        {
+            "type": "java",
+            "name": "MainFrame",
+            "request": "launch",
+            "mainClass": "MainFrame",
+            "projectName": "EOY-VScode_8b5be82a"
+>>>>>>> fd3df2b9e703c15e19c6235c2af9f737a832d34d
         }
     ]
 }
