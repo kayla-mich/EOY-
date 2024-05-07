@@ -13,6 +13,7 @@ public class MainFrame extends JFrame {
     public static void main(String[] args) {
         System.setProperty("java.awt.headless", "true");
 
+        JFrame frame = new JFrame("My First JFrame");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //JPanel mainPanel = new JPanel();
         //mainPanel.setBackground(new Color(128, 785, 255));
