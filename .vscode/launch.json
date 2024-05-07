@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "EOY-VScode_7349c27c"
+        },
+        {
             "args": [
                 "--extensionDevelopmentPath=${workspaceFolder}"
             ],
