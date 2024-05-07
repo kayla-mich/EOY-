@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.*;
 import java.awt.GridLayout;
@@ -18,14 +19,12 @@ public class MainFrame extends JFrame {
         //frame.setMinimumSize(Dimension minimumSize);
         frame.setSize(300, 300);
 
-
         frame.setMinimumSize(new Dimension(300,300));      
-     
 
         //Allows  do add different componets for screen
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
-
+        panel.setBackground(new Color(128,128,255));
 
         //Text labels and text fields
         JLabel name= new JLabel("Name");
@@ -50,7 +49,6 @@ public class MainFrame extends JFrame {
         submitButton.setPreferredSize(new Dimension(75, 30));
         panel.add(submitButton);
 
-
         frame.add(panel);
 
 
@@ -72,8 +70,6 @@ public class MainFrame extends JFrame {
         });
 
         frame.setVisible(true);
-
-
     }
 
 
