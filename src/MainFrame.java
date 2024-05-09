@@ -135,64 +135,92 @@ public class MainFrame extends JFrame {
 
 
 //NEW FRANE 
-    JFrame frame = new JFrame("Sign Up");
+signUpButton.addActionListener(new ActionListener() {
+    @Override
+   public void actionPerformed(ActionEvent e){
+    homeFrame.dispose();
+        
+  
+    JFrame signFrame = new JFrame("Sign Up");
 
          //Dimension minimumSize - MainFrame.main(String[])
         //frame.setMinimumSize(Dimension minimumSize);
-        frame.setSize(300, 300);
+        signFrame.setSize(300, 300);
 
-        frame.setMinimumSize(new Dimension(300,300));      
+        signFrame.setMinimumSize(new Dimension(300,300));      
 
         //Allows  do add different componets for screen
-        JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout());
-        panel.setBackground(new Color(128,128,255));
+        JPanel signpanel = new JPanel();
+        signpanel.setLayout(new FlowLayout());
+        signpanel.setBackground(new Color(128,128,255));
 
         //Text labels and text fields
         JLabel name= new JLabel("Name");
         JTextField textName= new JTextField(15);
         //makes the size of the my choice
         textName.setPreferredSize(new Dimension(10, 25));
-        panel.add(name);
-        panel.add(textName);
+        signpanel.add(name);
+        signpanel.add(textName);
         JLabel user= new JLabel("Username");
         JTextField textUser= new JTextField(15);
         textUser.setPreferredSize(new Dimension(10, 25));
-        panel.add(user);
-        panel.add(textUser);
+        signpanel.add(user);
+        signpanel.add(textUser);
         JLabel pass= new JLabel("Password");
-        JTextField textpass= new JTextField(15);
+        JPasswordField textpass= new JPasswordField(15);
         textpass.setPreferredSize(new Dimension(10, 25));
-        panel.add(pass);
-        panel.add(textpass);
+        signpanel.add(pass);
+        signpanel.add(textpass);
        
         //Adds the button on the screen
         JButton submitButton= new JButton("Submit");
         submitButton.setPreferredSize(new Dimension(75, 30));
-        panel.add(submitButton);
+        signpanel.add(submitButton);
+        JCheckBox showPasswordCheckBox= new JCheckBox("Show Password");
+        signpanel.add(showPasswordCheckBox);
+        JButton backSignButton = new JButton("Back");
+        backSignButton.setPreferredSize(new Dimension(75, 30));
+        signpanel.add(backSignButton);
 
-        frame.add(panel);
+
+
+        signFrame.add(signpanel);
+
+        showPasswordCheckBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (showPasswordCheckBox.isSelected()) {
+                    textpass.setEchoChar((char) 0);
+                } else {
+                    textpass.setEchoChar('•');
+                }
+            }
+        });
+        backSignButton.addActionListener(new ActionListener() {
+              @Override
+            public void actionPerformed(ActionEvent e){
+                signFrame.dispose();
+                homeFrame.setVisible(true);
+            }
+        });
 
 
         submitButton.addActionListener(new ActionListener() {
            @Override
             public void actionPerformed(ActionEvent e){
-                frame.dispose();
-            JFrame nextFrame = new JFrame("Next Screen");
-            nextFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            nextFrame.setSize(300, 300);
-           
-            JPanel nextPanel = new JPanel();
-            JLabel step= new JLabel("One step closer to creating your account!");
-            nextPanel.add(step);
-           
-            nextFrame.add(nextPanel);
-            nextFrame.setVisible(true);
+                signFrame.dispose();
+                homeFrame.setVisible(true);
             }
         });
 
-        frame.setVisible(true);
+        signFrame.setVisible(true);
     }
+});  
+homeFrame.setVisible(true);
+ 
+}
+
+
 
 
     private static Dimension Dimension(int i, int j) {
