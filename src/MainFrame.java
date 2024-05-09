@@ -15,13 +15,16 @@ public class MainFrame extends JFrame {
 
         JFrame homeFrame= new JFrame("Home Screen");
         homeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        homeFrame.setSize(300, 300);
+        homeFrame.setSize(300, 600);
         homeFrame.setMinimumSize(new Dimension(300,300));
        
         JPanel homePanel = new JPanel();
         homePanel.setLayout(new FlowLayout());
         homePanel.setBackground(new Color(128, 128, 255));
        
+        JLabel appLabel= new JLabel("LanguLure");
+        appLabel.setPreferredSize(new Dimension(300,150));
+        homeFrame.add(appLabel);
         JButton loginButton = new JButton("Log in");
         loginButton.setPreferredSize(new Dimension(75, 30));
         homePanel.add(loginButton);
@@ -105,7 +108,7 @@ public class MainFrame extends JFrame {
                     selectLangFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                      //JPanel mainPanel = new JPanel();
                     //mainPanel.setBackground(new Color(128, 128, 255));
-                    selectLangFrame.setSize(300, 300);
+                    selectLangFrame.setSize(300, 600);
            
                     JPanel nextPanel = new JPanel();
                     JLabel step= new JLabel("Congrats! Now select the language you would like to learn!");
@@ -145,7 +148,7 @@ signUpButton.addActionListener(new ActionListener() {
 
          //Dimension minimumSize - MainFrame.main(String[])
         //frame.setMinimumSize(Dimension minimumSize);
-        signFrame.setSize(300, 300);
+        signFrame.setSize(300, 600);
 
         signFrame.setMinimumSize(new Dimension(300,300));      
 
@@ -210,9 +213,25 @@ signUpButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 signFrame.dispose();
                 homeFrame.setVisible(true);
+                String name = textName.getText();
+                String username = textUser.getText();
+                char[] password= textpass.getPassword();
+                String passwordString = new String(password);
+                // Store credentials
+                if (userCredentials.containsKey(username)) {
+                    JOptionPane.showMessageDialog(signFrame, "Username already exists. Try a different one.");
+                } else {
+                    // Store the credentials in the HashMap
+                    userCredentials.put(username, passwordString);
+                    JOptionPane.showMessageDialog(signFrame, "Sign-up successful! You can now log in.");
+                 
+                    System.out.println("Username: " + username);
+                    System.out.println("Password: " + passwordString);
+                   
+                }
+                java.util.Arrays.fill(password, '\0');
             }
         });
-
         signFrame.setVisible(true);
     }
 });  
