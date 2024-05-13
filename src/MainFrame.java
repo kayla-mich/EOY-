@@ -2,11 +2,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.*;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.util.HashMap;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
- 
+import java.awt.Font;
 
 public class MainFrame extends JFrame {
     
@@ -22,10 +23,25 @@ public class MainFrame extends JFrame {
         homePanel.setLayout(new FlowLayout());
         homePanel.setBackground(new Color(128, 128, 255));
        
-        JLabel appLabel= new JLabel("LanguLure");
-        appLabel.setPreferredSize(new Dimension(300,150));
-        homeFrame.add(appLabel);
-        JButton loginButton = new JButton("Log in");
+        JLabel appLabel= new JLabel("LinguaLure");
+        appLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        appLabel.setFont(new Font("Arial", Font.BOLD, 50));
+        homePanel.add(appLabel);
+        JLabel spaceLabel= new JLabel("  ");
+        spaceLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        spaceLabel.setFont(new Font("Arial", Font.BOLD, 130));
+        homePanel.add(spaceLabel);
+        ImageIcon imageIcon = new ImageIcon("translation.png");
+         Image image = imageIcon.getImage();  
+        Image newimg = image.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH); 
+        ImageIcon resizedIcon = new ImageIcon(newimg);  
+        JLabel appimageLabel = new JLabel(resizedIcon);
+        homePanel.add(appimageLabel);
+        JLabel spaceLabel1= new JLabel("  ");
+        spaceLabel1.setHorizontalAlignment(SwingConstants.CENTER);
+        spaceLabel1.setFont(new Font("Arial", Font.BOLD, 130));
+        homePanel.add(spaceLabel1);
+       JButton loginButton = new JButton("Log in");
         loginButton.setPreferredSize(new Dimension(75, 30));
         homePanel.add(loginButton);
         JButton signUpButton = new JButton("Sign Up");
@@ -111,10 +127,15 @@ public class MainFrame extends JFrame {
                     selectLangFrame.setSize(300, 600);
            
                     JPanel nextPanel = new JPanel();
-                    JLabel step= new JLabel("Congrats! Now select the language you would like to learn!");
+                    JLabel step= new JLabel("Congrats! Now select the ");
                     nextPanel.add(step);
        
+                     //language you would like to learn!
+                    JLabel step1= new JLabel("language you would like to learn!");
+                    nextPanel.add(step1);
+       
                     selectLangFrame.add(nextPanel);
+                    
                     selectLangFrame.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(loginFrame, "Incorrect password. Please try again.");
