@@ -8,11 +8,12 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
-
+//Whole Stack of code
 public class MainFrame extends JFrame {
-    
+   
     private static HashMap<String, String> userCredentials = new HashMap<>();
     public static void main(String[] args) {
+
 
         JFrame homeFrame= new JFrame("Home Screen");
         homeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,7 +34,7 @@ public class MainFrame extends JFrame {
         homePanel.add(spaceLabel);
         ImageIcon imageIcon = new ImageIcon("translation.png");
          Image image = imageIcon.getImage();  
-        Image newimg = image.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH); 
+        Image newimg = image.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
         ImageIcon resizedIcon = new ImageIcon(newimg);  
         JLabel appimageLabel = new JLabel(resizedIcon);
         homePanel.add(appimageLabel);
@@ -49,6 +50,8 @@ public class MainFrame extends JFrame {
         homePanel.add(signUpButton);
 
 
+
+
         homeFrame.add(homePanel);
  
        loginButton.addActionListener(new ActionListener() {
@@ -61,9 +64,13 @@ public class MainFrame extends JFrame {
         loginFrame.setMinimumSize(new Dimension(300,300));
 
 
+
+
         JPanel logiPanel= new JPanel();
         logiPanel.setLayout(new FlowLayout());
         logiPanel.setBackground(new Color(128,128,255));
+
+
 
 
        JLabel user= new JLabel("Username");
@@ -90,6 +97,8 @@ public class MainFrame extends JFrame {
         loginFrame.setVisible(true);
 
 
+
+
        
         showPasswordCheckBox.addActionListener(new ActionListener() {
             @Override
@@ -101,6 +110,8 @@ public class MainFrame extends JFrame {
                 }
             }
         });
+
+
         //LOG IN CHECK
         submitLogin.addActionListener(new ActionListener() {
             @Override
@@ -108,6 +119,8 @@ public class MainFrame extends JFrame {
                 String username= textUser.getText();
                 char[] password= textpass.getPassword();
                  String inputPasswordString = new String(password).trim();
+
+
 
 
                 System.out.println("Entered username: " + username);
@@ -118,8 +131,8 @@ public class MainFrame extends JFrame {
                     if (storedPassword.equals(inputPasswordString)) {
                         JOptionPane.showMessageDialog(loginFrame, "Login successful!");
                         loginFrame.dispose();
-    
-                  
+   
+                 
                       JFrame selectLangFrame = new JFrame("Next Screen");
                     selectLangFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                      //JPanel mainPanel = new JPanel();
@@ -129,13 +142,32 @@ public class MainFrame extends JFrame {
                     JPanel nextPanel = new JPanel();
                     JLabel step= new JLabel("Congrats! Now select the ");
                     nextPanel.add(step);
-       
-                     //language you would like to learn!
                     JLabel step1= new JLabel("language you would like to learn!");
                     nextPanel.add(step1);
-       
                     selectLangFrame.add(nextPanel);
-                    
+                    //Dropdown of the languages
+                    JComboBox<String> languageComboBox = new JComboBox<>(new String[]{
+                       "-Select Language-", "Mandarin Chinese", "Spanish", "English", "Hindi", "Arabic",
+                        "Portuguese", "Bengali", "Russian", "Japanese", "Urdu",
+                        "Indonesian", "German", "French", "Telugu" });
+                    nextPanel.add(languageComboBox);
+                    JButton submitLanguButton= new JButton("Submit");
+                    submitLanguButton.setPreferredSize(new Dimension(75, 30));
+                   nextPanel.add(submitLanguButton);
+                 
+                     languageComboBox.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            String selectedLanguage = (String) languageComboBox.getSelectedItem();
+                             System.out.println("Selected Language: " + selectedLanguage);
+                             if (!selectedLanguage.equals("-Select Language-")) {
+                                submitLanguButton.setVisible(true);
+                            } else {
+                                submitLanguButton.setVisible(false);
+                            }
+                            }
+                    });
+                   
                     selectLangFrame.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(loginFrame, "Incorrect password. Please try again.");
@@ -158,25 +190,31 @@ public class MainFrame extends JFrame {
 });
 
 
-//NEW FRANE 
+
+
+//NEW FRANE
 signUpButton.addActionListener(new ActionListener() {
     @Override
    public void actionPerformed(ActionEvent e){
     homeFrame.dispose();
-        
-  
+       
+ 
     JFrame signFrame = new JFrame("Sign Up");
+
 
          //Dimension minimumSize - MainFrame.main(String[])
         //frame.setMinimumSize(Dimension minimumSize);
         signFrame.setSize(300, 600);
 
+
         signFrame.setMinimumSize(new Dimension(300,300));      
+
 
         //Allows  do add different componets for screen
         JPanel signpanel = new JPanel();
         signpanel.setLayout(new FlowLayout());
         signpanel.setBackground(new Color(128,128,255));
+
 
         //Text labels and text fields
         JLabel name= new JLabel("Name");
@@ -208,7 +246,11 @@ signUpButton.addActionListener(new ActionListener() {
 
 
 
+
+
+
         signFrame.add(signpanel);
+
 
         showPasswordCheckBox.addActionListener(new ActionListener() {
             @Override
@@ -239,18 +281,24 @@ signUpButton.addActionListener(new ActionListener() {
                 char[] password= textpass.getPassword();
                 String passwordString = new String(password);
                 // Store credentials
+                if (username.isEmpty() || passwordString.isEmpty()) {
+                    JOptionPane.showMessageDialog(signFrame, "Please fill out both username and password fields.");
+                    submitButton.setEnabled(false);
+                } else {
                 if (userCredentials.containsKey(username)) {
                     JOptionPane.showMessageDialog(signFrame, "Username already exists. Try a different one.");
+
+
                 } else {
                     // Store the credentials in the HashMap
                     userCredentials.put(username, passwordString);
                     JOptionPane.showMessageDialog(signFrame, "Sign-up successful! You can now log in.");
-                 
                     System.out.println("Username: " + username);
                     System.out.println("Password: " + passwordString);
                    
                 }
                 java.util.Arrays.fill(password, '\0');
+              }
             }
         });
         signFrame.setVisible(true);
@@ -263,8 +311,22 @@ homeFrame.setVisible(true);
 
 
 
+
+
+
+
     private static Dimension Dimension(int i, int j) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'Dimension'");
     }
 }
+
+
+
+
+
+
+
+
+
+
