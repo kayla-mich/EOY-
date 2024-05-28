@@ -88,9 +88,10 @@ public class LoginFrame extends JFrame{
 
                     //Dropdown of the languages 
                     JComboBox<String> languageComboBox = new JComboBox<>(new String[]{
-                       "-Select Language-", "Mandarin Chinese", "Spanish", "English", "Hindi", "Arabic",
-                        "Portuguese", "Bengali", "Russian", "Japanese", "Urdu",
-                        "Indonesian", "German", "French", "Telugu" });
+                       "-Select Language-",  "العربية(Arabic)", "Bengali", "English", "Français (French)", "Deutsch (German)", "हिंदी (Hindi)", 
+                       "Indonesia", "日本語 (Japanese)", "中文 (Mandarin Chinese)", "Português (Portuguese Brazil)", 
+                       "Русский (Russian)", "Español (Spanish)", "తెలుగు (Telugu)", "اردو(Urdu)"
+                    });
                     nextPanel.add(languageComboBox);
                     JButton submitLanguButton= new JButton("Submit"); 
                     submitLanguButton.setPreferredSize(new Dimension(75, 30));
@@ -103,14 +104,17 @@ public class LoginFrame extends JFrame{
                              System.out.println("Selected Language: " + selectedLanguage);
                              if (!selectedLanguage.equals("-Select Language-")) {
                                 submitLanguButton.setVisible(true);
-                            
+                          //Submit button
                                 submitLanguButton.addActionListener(new ActionListener() {
                                     @Override
-                                    public void actionPerformed(ActionEvent e){
-                                    loginFrame.dispose();
-                                    new LessonHomeFrame(userCredentials);
-                                }
+                                    public void actionPerformed(ActionEvent e) {
+                                        selectLangFrame.dispose();
+                                        new LessonHomeFrame(userCredentials,username, selectedLanguage);
+                                    }
                                 });
+        
+                                selectLangFrame.setVisible(true);
+
                             } else {
                                 submitLanguButton.setVisible(false);
                             }
