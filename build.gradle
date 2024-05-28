@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    jcenter() // Maven Central repository
+}
+
+dependencies {
+    // JavaMail API dependency
+    implementation 'com.sun.mail:javax.mail:1.6.2'
+}
+
+// Java source compatibility and target compatibility
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+// Task to run the main class
+run {
+    // Set the main class for running the application
+    main = 'CanvasAPIClient'
+}

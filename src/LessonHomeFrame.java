@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 import java.awt.Font;
 
 public class LessonHomeFrame extends JFrame{
+    
+    private int score;
+
     public LessonHomeFrame(UserCredentials userCredentials, String username, String selectedLanguage) {
     JFrame lessonHomeFrame= new JFrame("Home Lesson");
     lessonHomeFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -88,8 +91,17 @@ public class LessonHomeFrame extends JFrame{
         u1Lesson1Button.setBounds(15,115,170,20);
         lessonHomeFrame.add(u1Lesson1Button);
 
+        u1Lesson1Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                if(selectedLanguage.equals("العربية(Arabic)")){
+                    lessonHomeFrame.dispose();
+                    new ArabicUnit1(userCredentials, username, selectedLanguage);
+                }
+            }
+        });
+ 
 
-        
 
         JLabel u1Lesson2= new JLabel("Lesson 2");
         u1Lesson2.setFont(new Font("Britannic", Font.PLAIN, 15));
